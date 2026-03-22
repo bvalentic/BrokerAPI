@@ -1,6 +1,13 @@
 # BrokerAPI
 
-The API interacting with my brokerage account, making trades
+Service Description:
+
+The API interacting with my brokerage account
+
+Functions:
+
+- Making trades
+- Querying APIs for low-volume data
 
 ## Candidates
 
@@ -23,6 +30,8 @@ The API interacting with my brokerage account, making trades
 
 ## Database Selection
 
+### Trade Layer
+
 MySQL is my first choice, with Postgres and redis in second and third, based on CNCF rankings
 
 - MySQL
@@ -30,6 +39,18 @@ MySQL is my first choice, with Postgres and redis in second and third, based on 
 - redis
 - TiKV
 - Vitess
+
+Deep recommends PostgreSQL, with redis as a caching layer add-on if needed.
+TiKV (NoSQL, can become SQL with TiDB) and Vitess are not needed unless heavily horizontal scaling is required.
+
+### Market Layer
+
+- QuestDB
+- TimescaleDB
+- Clickhouse
+
+Deep recommends QuestDB or TimescaleDB, with redis as an optional caching layer (same instance as above)
+QuestDB has better performance according to their website graphs, and Timescale seems to be SaaS... Quest it is
 
 ## Roadmap
 
@@ -42,15 +63,27 @@ Todos and objectives for this service
 [] Abstract broker layer so the underlying provider can be swapped with minimal changes
 [] Handle API rate limiting, retries, and connection failure recovery
 
-### Environment
+### Environment and CI/CD
 
 [] Create differentiation between "test" and "prod" environments
+[] Create beta environment for develop branch
+[] Add CI/CD pipeline to push changes merged into develop and main
 
 ### Database
 
-/Include here or in separate service?/
-[] Design schema for trades, ticker history, model predictions, and signals
-[] Choose and set up a database (e.g. PostgreSQL, SQLite for local dev)
+#### Trade DB
+
+[] Design schema for trades, model predictions, and signals
+  [] Calendar events and other rarely-updated data?
+[] Choose and set up a database (e.g. PostgreSQL) for transaction and reference data
 [] Implement data ingestion pipeline for OHLCV and any derived features (Returns, Range, etc.)
+[] Add redis caching layer
+
+#### Market DB
+
+/Include here or in separate service?/
+[] Design schema for ticker history, OHLCV data, and other high-volume entries
+[] Choose and set up a database (e.g. QuestDB) for market data
 [] Add data validation and quality checks: missing bars, stale prices, outlier returns
 [] Define a data retention policy and archiving strategy for historical records
+[] Add redis caching layer
