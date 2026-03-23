@@ -1,0 +1,4 @@
+alpaca
+matplotlib
+numpy
+pandas

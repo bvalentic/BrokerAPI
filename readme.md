@@ -9,6 +9,22 @@ Functions:
 - Making trades
 - Querying APIs for low-volume data
 
+## Getting Started
+
+### Create Virtual Env and Install Dependencies
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r requirements.txt
+```
+
+### Run Program
+
+```bash
+python alpha-broker.py # or whichever py file you want to run
+```
+
 ## Candidates
 
 - ~~Fidelity~~
