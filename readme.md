@@ -25,7 +25,7 @@ python3 -m pip install -r requirements.txt
 python alpha-broker.py # or whichever py file you want to run
 ```
 
-## Candidates
+## API Candidates
 
 - ~~Fidelity~~
   - No API, not an option
