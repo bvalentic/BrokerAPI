@@ -1,7 +1,7 @@
 # BrokerAPI
 
 Service Description:
-
+(A rough draft, for testing and feasability)
 The API interacting with my brokerage account
 
 Functions:
@@ -38,11 +38,14 @@ python alpha-broker.py # or whichever py file you want to run
   - Seems to be a clear winner
 - Coinbase
   - Crypto (spot and derivatives), commodity futures; no other securities
+  - Already using Coinbase Advanced
 - IBKR
   - $0.0035/trade, but $0.35 minimum per order, so the same as Tradier Lite?
   - Need to compare APIs
 - Tradier
   - Lite version is free, but $0.35/trade; Pro is $10/month but free trades (break-even between the two is 1 trade/day)
+
+Conclusion: Build first service using Alpaca, then move on to Coinbase once I have some experience
 
 ## Database Selection
 
@@ -74,10 +77,14 @@ Todos and objectives for this service
 
 ### General
 
-[] Select a brokerage (Alpaca is frontrunner)
+[x] Select a brokerage
+  [] Alpaca for stocks & ETFs
+  [] Coinbase for crypto & derivatives
+[] Scaffold out TS files
 [] Implement authenticated connection to broker
-[] Abstract broker layer so the underlying provider can be swapped with minimal changes
-[] Handle API rate limiting, retries, and connection failure recovery
+[] ~~Abstract broker layer so the underlying provider can be swapped with minimal changes~~
+[] Fetch account information
+[] Handle basic API rate limiting, retries, and connection failure recovery
 
 ### Environment and CI/CD
 
