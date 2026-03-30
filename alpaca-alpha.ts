@@ -25,6 +25,5 @@ alpaca.getAccount().then((account: Record<string, unknown>) => {
 
   // check how much money we can use to open new positions
   console.log(`Current buying power: $${buying_power}`);
-
   console.log(`Current equity: $${equity}`);
 });

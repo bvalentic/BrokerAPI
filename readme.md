@@ -78,12 +78,12 @@ Todos and objectives for this service
 ### General
 
 [x] Select a brokerage
-  [] Alpaca for stocks & ETFs
+  [x] Alpaca for stocks & ETFs
   [] Coinbase for crypto & derivatives
 [] Scaffold out TS files
-[] Implement authenticated connection to broker
+[x] Implement authenticated connection to broker
 [] ~~Abstract broker layer so the underlying provider can be swapped with minimal changes~~
-[] Fetch account information
+[x] Fetch account information
 [] Handle basic API rate limiting, retries, and connection failure recovery
 
 ### Environment and CI/CD
@@ -96,17 +96,11 @@ Todos and objectives for this service
 
 #### Trade DB
 
-[] Design schema for trades, model predictions, and signals
-  [] Calendar events and other rarely-updated data?
-[] Choose and set up a database (e.g. PostgreSQL) for transaction and reference data
-[] Implement data ingestion pipeline for OHLCV and any derived features (Returns, Range, etc.)
-[] Add redis caching layer
+Once databases are created:
+[] Connect to Ithaca (Trade DB)
 
 #### Market DB
 
-/Include here or in separate service?/
-[] Design schema for ticker history, OHLCV data, and other high-volume entries
-[] Choose and set up a database (e.g. QuestDB) for market data
-[] Add data validation and quality checks: missing bars, stale prices, outlier returns
-[] Define a data retention policy and archiving strategy for historical records
-[] Add redis caching layer
+Once databases are created:
+[] Decide if using the same API for trade and market data
+[] Connect to Ilium (Market DB)
